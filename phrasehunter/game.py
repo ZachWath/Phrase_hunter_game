@@ -18,16 +18,24 @@ class Game ():
         self.welcome()
         self.active_phrase = self.get_random_phrase()
         self.game_phrase = Phrase (self.active_phrase)
-        while self.missed < 5 and self.guesses != self.game_phrase.phrase_set:
+        
+        while True:
             self.game_phrase.display()
             print(f'you have {self.missed} strikes!!')
             self.get_guess()
-            
-        if self.guesses == 5:
-            self.game_over('lose')
-        elif self.guesses == self.game_phrase.phrase_set:
-            self.game_over('win')
+            self.check = self.game_phrase.check_complete()
+            if self.check == 'complete':
+                self.game_over ('win')
+                break
+            elif self.check == 'not complete':
+                if self.missed == 5:
+                    self.game_over('lose')
+                    break
+                else:
+                    continue
 
+
+            
 
     def get_random_phrase (self):
         self.random_phrase = random.choice(self.phrases)
@@ -48,6 +56,15 @@ class Game ():
 
     def get_guess (self):
         guess = input ('What letter would you like to guess?    ')
+        while True:
+            if len(guess) > 1:
+                print('This is an invalid guess, please choose 1 character...')
+                return
+            elif isinstance(guess, str) != True:
+                print('This is an invalid guess, please choose a letter... not a number...')
+                return
+            else:
+                break
         if guess in self.game_phrase.phrase_set:
             self.guesses.add(guess)
             self.game_phrase.phrase_correct_letters.add(guess)
@@ -56,15 +73,28 @@ class Game ():
 
     def game_over (self, outcome):
         if outcome == 'win':
-            print ('Congratulations! YOU WON!!!')
+            print (f"""Congratulations! YOU WON!!!
+                    The phrase was {self.active_phrase}""")
         elif outcome == 'lose':
-            print("""I'm sorry, but you lost! Better luck next time! """)
+            print(f"""I'm sorry, but you lost! The hidden Phrase was {self.active_phrase}, Better luck next time! """)
+        
+        while True:
+            play_again = input('Would you like to play again? (Y/N)     ')
+            if play_again.upper() == "Y":
+                break
+            elif play_again.upper() == "N":
+                quit()
+            else:
+                print("Hmm, that doesnt seem to be a valid answer , please try again...")
+                continue
+
+
 
 
 while __name__ == "__main__":
     new_game = Game()
     new_game.start()
-        
+    
         
         
         

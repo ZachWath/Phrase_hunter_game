@@ -8,19 +8,21 @@ class Phrase():
         self.phrase = phrase.lower()
         self.phrase_set = set(self.phrase)
         self.phrase_correct_letters = set()
-
+        
+        
 
     def display(self):
         self.phrase_hidden_list = []
         for letter in self.phrase:
             if letter == ' ':
-                self.phrase_hidden_list.append(' ')
+                self.phrase_hidden_list.append('  ')
                 continue
             elif letter in self.phrase_correct_letters:
                 self.phrase_hidden_list.append(letter)
+                self.phrase_hidden_list.append(' ')
                 continue
-            self.phrase_hidden_list.append('_')
-        self.display_string = ' '.join(
+            self.phrase_hidden_list.append('_ ')
+        self.display_string = ''.join(
             [str(letter) for letter in self.phrase_hidden_list])
         print(self.display_string)
 
@@ -34,17 +36,18 @@ class Phrase():
 
 
     def check_complete(self):
-        if Game.guesses == phrase_set:
-            game.game_over(win)
-        elif Game.missed == 5:
-            game.game_over(lose)
+        self.check_set = self.phrase_set.discard(' ')
+        if self.phrase_correct_letters == self.phrase_set:
+            return 'complete'
         else:
-            return 'keep playing'
+            return 'not complete'
+            
+        
+        
+        
+            
     
-new_phrase = Phrase('The quick and the dead')
-new_phrase.display()
-result = new_phrase.check_letter ('v')
-print(result)
+
 # self.possible_phrases = Phrase.phrase_bank
 # self.new_phrase = random.choice(self.possible_phrases)
 # self.num_of_charechters = len(self.new_phrase)
