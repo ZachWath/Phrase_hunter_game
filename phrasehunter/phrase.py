@@ -1,15 +1,12 @@
 import random
 
-
-
 class Phrase():
 
     def __init__(self, phrase):
         self.phrase = phrase.lower()
         self.phrase_set = set(self.phrase)
         self.phrase_correct_letters = set()
-        
-        
+
 
     def display(self):
         self.phrase_hidden_list = []
@@ -41,15 +38,4 @@ class Phrase():
             return 'complete'
         else:
             return 'not complete'
-            
-        
-        
-        
-            
-    
 
-# self.possible_phrases = Phrase.phrase_bank
-# self.new_phrase = random.choice(self.possible_phrases)
-# self.num_of_charechters = len(self.new_phrase)
-# self.letters = list(self.new_phrase)
-# self.set_of_charechters = set(self.new_phrase)
