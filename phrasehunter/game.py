@@ -7,10 +7,10 @@ import random
 class Game ():
     def __init__(self):
         self.missed = 0 
-        self.phrases = ['Citizen Kane', 'Knives Out', 'Casablanca', 'Black Panther', 'Modern Times',
-                        'The Wizard of Oz', 'Parasite', 'Get Out', 'The Godfather', 'Wonder Woman', 'A Quiet Place',
-                        'Dunkirk', 'Arrival', 'Logan', 'The Adventures of Robin Hood', 'Alien', 'La La Land',
-                        'The Maltese Falcon', 'Psycho', 'Baby Driver', 'Goodfellas', 'Tombstone', 'Chef']
+        self.phrases = ['Citizen Kane', 'Knives Out', 'Kill Bill', 'Black Panther', 'Modern Times',
+                        'The Wizard of Oz', 'Three Days of the Condor', 'Get Out', 'The Godfather', 'Wonder Woman', 'A Quiet Place',
+                        'The Place Beyond the Pines', 'Good Will Hunting', 'Shawshank Redemption', 'The Adventures of Robin Hood', 'Super Fly', 'La La Land',
+                        'The Maltese Falcon', 'The Longest Day', 'Baby Driver', 'Blade Runner', 'The Good the Bad and the Ugly', 'Silence of the Lambs']
         self.active_phrase = ''
         self.guesses = set()
 
